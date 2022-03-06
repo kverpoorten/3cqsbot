@@ -60,16 +60,10 @@ class Signals:
         else:
             pages = math.ceil(rank / 250)
         
-        current_rank = 0
         for page in range(1,pages +1):
             page = cg.get_coins_markets(vs_currency='usd', page=page, per_page=250)
             for entry in page:
                 market.append(entry)
-
-                #make sure we don't add too many coins to the list
-                current_rank += 1
-                if current_rank > rank:
-                    break
 
         return market
     
